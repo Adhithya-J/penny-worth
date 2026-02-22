@@ -89,10 +89,11 @@ def parse_gpay_text(text):
 
 def main():
     pdf_path = os.environ["PDF_PATH"]
+    csv_path = os.environ["CSV_PATH"]
     pdf_text = extract_text_from_pdf(pdf_path)
     clean_pdf_text = clean_text(pdf_text)
     df = parse_gpay_text(clean_pdf_text)
-    df.to_csv(".\artefacts\text.csv")
+    df.to_csv(csv_path)
     print(df.head())
 
 
