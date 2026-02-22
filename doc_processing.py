@@ -31,7 +31,7 @@ def parse_gpay_text(text):
 
         def get_transaction_details(text):
             date_pattern = r'(\d{2}[A-Za-z]{3},\d{4})'
-            merchant_pattern = r'Paidto(.+?)'
+            merchant_pattern = r'(Paidto|Receivedfrom)(.+?)'
             amount_pattern = r'₹([\d,]+(?:\.\d+)?)'
             pattern = date_pattern + r'\s+' + merchant_pattern + r'\s+' + amount_pattern
 
@@ -44,8 +44,9 @@ def parse_gpay_text(text):
         
         if match: # appears in input order
             raw_date = match.group(1)
-            merchant = match.group(2).strip()
-            amount = match.group(3)
+            txn_type = "DEBIT" if match.group(2) == "Paidto" else "CREDIT"
+            merchant = match.group(3).strip()
+            amount = match.group(4)
 
             date_obj = datetime.strptime(raw_date, "%d%b,%Y") # string parse time
             formatted_date = date_obj.strftime("%Y-%m-%d") # string format time
@@ -76,6 +77,7 @@ def parse_gpay_text(text):
                 "Date": formatted_date,
                 "Time": formatted_time,
                 "Description": merchant,
+                "Type": txn_type,
                 "Amount": float(amount.replace(",", "")),
                 "UPI_ID": upi_id,
                 "Bank": bank
@@ -90,10 +92,14 @@ def parse_gpay_text(text):
 def main():
     pdf_path = os.environ["PDF_PATH"]
     csv_path = os.environ["CSV_PATH"]
+
     pdf_text = extract_text_from_pdf(pdf_path)
     clean_pdf_text = clean_text(pdf_text)
+    
     df = parse_gpay_text(clean_pdf_text)
+    
     df.to_csv(csv_path)
+    
     print(df.head())
 
 
