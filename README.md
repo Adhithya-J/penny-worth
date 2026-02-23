@@ -1,2 +1,3 @@
 # penny-worth
-Automated financial document processing pipeline
+
+A lightweight personal finance analyzer for Google Pay transaction PDFs
