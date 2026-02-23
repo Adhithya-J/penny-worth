@@ -19,6 +19,15 @@ def clean_text(text):
     text = re.sub(r'\s{2,}', ' ', text)
     return text.strip()
 
+def get_transaction_details(text):
+    date_pattern = r'(\d{2}[A-Za-z]{3},\d{4})'
+    merchant_pattern = r'(Paidto|Receivedfrom)(.+?)'
+    amount_pattern = r'₹([\d,]+(?:\.\d+)?)'
+    pattern = date_pattern + r'\s+' + merchant_pattern + r'\s+' + amount_pattern
+
+    match = re.search(pattern, text)
+    return match
+
 def parse_gpay_text(text):
 
     lines = text.split("\n")
@@ -29,14 +38,7 @@ def parse_gpay_text(text):
     while i < len(lines): # iterating through line items
         line = lines[i].strip() # cleaning line text
 
-        def get_transaction_details(text):
-            date_pattern = r'(\d{2}[A-Za-z]{3},\d{4})'
-            merchant_pattern = r'(Paidto|Receivedfrom)(.+?)'
-            amount_pattern = r'₹([\d,]+(?:\.\d+)?)'
-            pattern = date_pattern + r'\s+' + merchant_pattern + r'\s+' + amount_pattern
 
-            match = re.match(pattern, text)
-            return match
 
 
         match = get_transaction_details(line)
@@ -57,8 +59,12 @@ def parse_gpay_text(text):
             upi_id_pattern = r'UPITransactionID:(\d+)'
 
             pattern = time_pattern + '\s+' + upi_id_pattern
-            time_match = re.match(pattern, time_line)
+            time_match = re.search(pattern, time_line)
 
+            formatted_time = None
+            upi_id = None
+            bank = None
+            
             if time_match:
                 raw_time = time_match.group(1)
                 upi_id = time_match.group(2)
@@ -69,7 +75,7 @@ def parse_gpay_text(text):
             # bank name
             bank_line = lines[i+2] if i+2 < len(lines) else ""
             pattern = r'Paidby(.+)'
-            bank_match = re.match(pattern, bank_line)
+            bank_match = re.search(pattern, bank_line)
 
             bank = bank_match.group(1).strip() if bank_match else ""
 

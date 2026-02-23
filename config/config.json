@@ -1,0 +1,115 @@
+{
+    "categories": {
+        "Food": [
+            "ZOMATO",
+            "SWIGGY",
+            "DOMINOS",
+            "HungerBox",
+            "VENDIFYPRIVATELIMITED",
+            "SRIRaghavendraHotChips",
+            "SRIRAGHAVENDRAHOTCHIPSS",
+            "Rmznexity-CB",
+            "bigbasket",
+            "WritersCafe",
+            "JACKFOODINDUSTRY",
+            "KARACHIBAKERY",
+            "GEMRESTAURANT",
+            "Madhapur GPullaReddySweets",
+            "ZOMATOLIMITED",
+            "DOMINOSPIZZA",
+            "KESHAVREDDYSWEETS",
+            "GopalpetaChennakeshavuluChatBhandar",
+            "GREENSANDMORE",
+            "MasqatiCharminar",
+            "KOKKILIGADDALANKAMMA",
+            "SLINTERNATIONAL",
+            "MOHAMMED"
+        ],
+        "Transport": [
+            "UBER",
+            "OLA",
+            "RAPIDO",
+            "Rapido",
+            "METROPOLITANTRANSPORTCORPORATIONCHENNAI",
+            "LandTMetroRailHyderabadLimited",
+            "LandTMETRORAILHYDERABADLIMITED"
+        ],
+        "Shopping": [
+            "AMAZON",
+            "FLIPKART",
+            "SouthIndiaShoppingMall",
+            "ALAMCLOTHES",
+            "SAMPOORNASUPERMARKETAYYAPPASOCIETY"
+        ],
+        "Rent": [
+            "MSNESTELITE"
+        ],
+        "Subscriptions": [
+            "NETFLIX",
+            "SPOTIFY"
+        ],
+        "Friends": [
+            "Sandeepjai",
+            "RahulMishra",
+            "SrinivasanNerudtha",
+            "ShyamSrinivas",
+            "SuryaPrakash",
+            "AANANDHAKRISHNAP",
+            "PranavMohanLal",
+            "SaktheBalan",
+            "ATIFREHMAN",
+            "AtifRehman",
+            "EMADSHAMIM"
+        ],
+        "Family": [
+            "ArvindJ"
+        ],
+        "Relatives": [
+            "Rajendraprasad",
+            "AkhilaS"
+        ],
+        "Utilities": [
+            "JSanjia",
+            "MYJIO"
+        ],
+        "Health": [
+            "GYMSQUADFITNESS",
+            "baluyadav"
+        ],
+        "Edu": [
+            "IITM",
+            "ZedsBookCenter",
+            "IIMKOZHIKODE",
+            "IITMHOSTELMANAGEMENTTRUST",
+            "BESTBOOKCENTRE",
+            "TamilnaduAryasamajEducationalSociety(Kirdakendram)",
+            "PRIMEBOOKDEPOT"
+        ],
+        "Entertainment": [
+            "DISTRICTMOVIETICKET",
+            "INOX",
+            "ORBGENTECHNOLOGIESPRIVATELIMITEDDISTRICTMOVIEUPI"
+        ]
+    },
+    "office_commute": {
+        "to_office": {
+            "start": "09:00",
+            "end": "10:15"
+        },
+        "from_office": {
+            "start": "17:00",
+            "end": "20:00"
+        },
+        "working_days": [
+            0,
+            1,
+            2,
+            3,
+            4
+        ],
+        "max_amount": 250,
+        "max_repetitions": 3,
+        "category_name": "Office Commute",
+        "overwrite_existing": true
+    }
+}
