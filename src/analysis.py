@@ -74,6 +74,12 @@ def add_commute_category(df,category_name="Commute",overwrite_existing=True):
     df.loc[mask, "Category"] = category_name
     return df
 
+def top_k_transactions_in_other(df,k=5):
+    expenses = df[df["Type"] == "DEBIT"]
+    expenses = expenses[expenses["Category"] == "Other"]
+    totals = expenses.sort_values(by="Amount",ascending=False)
+    return totals.head(k)
+
 def categorize_transactions(df):
     CATEGORY_RULES = CONFIG["categories"]
 
